@@ -1,0 +1,347 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 19,
+      "patch": 0
+    },
+    "configurePresets": [
+      {
+        "name": "macos",
+        "hidden": true,
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Darwin"
+        },
+        "generator": "Xcode",
+        "warnings": {"dev": true, "deprecated": true},
+        "cacheVariables": {
+          "CMAKE_OSX_DEPLOYMENT_TARGET": "10.14",
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/conan_provider.cmake"
+        }
+      },
+      {
+        "name": "darwin-debug",
+        "inherits": "macos",
+        "displayName": "Darwin 10.14+ (Debug)",
+        "description": "Conan v2 with CMake example for macOS - Debug Configuration",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/darwin-debug"
+        }
+      },
+      {
+        "name": "darwin-release-arm64",
+        "inherits": "macos",
+        "displayName": "Darwin arm64 10.14+ (Release)",
+        "description": "Conan v2 with CMake example for macOS arm64 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-darwin-arm64-realese",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_OSX_ARCHITECTURES": "arm64",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/darwin-release-arm64"
+        }
+      },
+      {
+        "name": "darwin-release-x86_64",
+        "inherits": "macos",
+        "displayName": "Darwin x86_64 10.14+ (Release)",
+        "description": "Conan v2 with CMake example for macOS x86_64 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-darwin-x86_64-realese",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/darwin-release-x86_64"
+        }
+      },
+      {
+        "name": "ios",
+        "hidden": true,
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Darwin"
+        },
+        "generator": "Xcode",
+        "warnings": {"dev": true, "deprecated": true},
+        "cacheVariables": {
+          "CMAKE_SYSTEM_NAME": "iOS",
+          "CMAKE_OSX_DEPLOYMENT_TARGET": "12.0",
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/conan_provider.cmake"
+        }
+      },
+      {
+        "name": "ios-release-arm64",
+        "inherits": "ios",
+        "displayName": "iOS arm64 9.0+ (Release)",
+        "description": "Conan v2 with CMake example for iOS arm64 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-ios-arm64-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_OSX_ARCHITECTURES": "arm64",
+          "CMAKE_OSX_SYSROOT": "iphoneos",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/ios-release-arm64"
+        }
+      },
+      {
+        "name": "ios-release-armv7",
+        "inherits": "ios",
+        "displayName": "iOS armv7 9.0+ (Release)",
+        "description": "Conan v2 with CMake example for iOS armv7 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-ios-armv7-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_OSX_ARCHITECTURES": "armv7",
+          "CMAKE_OSX_SYSROOT": "iphoneos",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/ios-release-armv7"
+        }
+      },
+      {
+        "name": "ios-release-x86_64",
+        "inherits": "ios",
+        "displayName": "iOS x86_64 9.0+ (Release)",
+        "description": "Conan v2 with CMake example for iOS x86_64 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-ios-x86_64-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_OSX_ARCHITECTURES": "x86_64",
+          "CMAKE_OSX_SYSROOT": "iphonesimulator",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/ios-release-x86_64"
+        }
+      },
+      {
+        "name": "macos-android",
+        "hidden": true,
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Darwin"
+        },
+        "warnings": {"dev": true, "deprecated": true},
+        "cacheVariables": {
+          "CMAKE_SYSTEM_NAME": "Android",
+          "ANDROID_PLATFORM": "21",
+          "ANDROID_STL": "c++_static",
+          "CMAKE_ANDROID_NDK": "$env{HOME}/Library/Android/sdk/ndk/21.4.7075529",
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/conan_provider.cmake"
+        }
+      },
+      {
+        "name": "android-release-x86_64",
+        "inherits": "macos-android",
+        "displayName": "Android x86_64 abi21 (Release)",
+        "description": "Conan v2 with CMake example for Android x86_64 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-android-x86_64-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_ANDROID_ARCH_ABI": "x86_64",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/android-release-x86_64"
+        }
+      },
+      {
+        "name": "android-release-x86",
+        "inherits": "macos-android",
+        "displayName": "Android x86 abi21 (Release)",
+        "description": "Conan v2 with CMake example for Android x86 - Release Configuration",
+        "binaryDir": "${sourceDir}/build-android-x86-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_ANDROID_ARCH_ABI": "x86",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/android-release-x86"
+        }
+      },
+      {
+        "name": "android-release-armeabi-v7a",
+        "inherits": "macos-android",
+        "displayName": "Android armeabi-v7a abi21 (Release)",
+        "description": "Conan v2 with CMake example for Android armeabi-v7a - Release Configuration",
+        "binaryDir": "${sourceDir}/build-android-armeabi-v7a-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_ANDROID_ARCH_ABI": "armeabi-v7a",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/android-release-armeabi-v7a"
+        }
+      },
+      {
+        "name": "android-release-arm64-v8a",
+        "inherits": "macos-android",
+        "displayName": "Android arm64-v8a abi21 (Release)",
+        "description": "Conan v2 with CMake example for Android arm64-v8a - Release Configuration",
+        "binaryDir": "${sourceDir}/build-android-arm64-v8a-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "ANDROID_STL": "c++_static",
+          "CMAKE_ANDROID_ARCH_ABI": "arm64-v8a",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/android-release-arm64-v8a"
+        }
+      },
+      {
+        "name": "windows",
+        "hidden": true,
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Windows"
+        },
+        "warnings": {"dev": true, "deprecated": true},
+        "cacheVariables": {
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/exports",
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/conan_provider.cmake"
+        }
+      },
+      {
+        "name": "windows-debug",
+        "inherits": "windows",
+        "displayName": "Windows x64 (Debug)",
+        "description": "Conan v2 with CMake example for Windows - Debug Configuration",
+        "binaryDir": "${sourceDir}/build",
+        "architecture": {
+          "value": "x64",
+          "strategy": "set"
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_DEBUG_POSTFIX": "d"
+        }
+      },
+      {
+        "name": "win32-release-x64",
+        "inherits": "windows",
+        "displayName": "Windows x64 (Release)",
+        "description": "Conan v2 with CMake example for Windows - Release Configuration",
+        "binaryDir": "${sourceDir}/build-win32-x64",
+        "architecture": {
+          "value": "x64",
+          "strategy": "set"
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/win32-release-x64"
+        }
+      },
+      {
+        "name": "win32-release-ia32",
+        "inherits": "windows",
+        "displayName": "Windows ia32 (Release)",
+        "description": "Conan v2 with CMake example for Windows - Release Configuration",
+        "binaryDir": "${sourceDir}/build-win32-ia32",
+        "architecture": {
+          "value": "Win32",
+          "strategy": "set"
+        },
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/win32-release-ia32"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "darwin-debug",
+        "configurePreset": "darwin-debug",
+        "displayName": "Darwin Local Compilation (Debug)",
+        "description": "Conan v2 with CMake example for macOS - Debug Configuration",
+        "configuration": "Debug"
+      },
+      {
+        "name": "darwin-release-x86_64",
+        "configurePreset": "darwin-release-x86_64",
+        "displayName": "Darwin x86_64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for macOS x86_64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "darwin-release-arm64",
+        "configurePreset": "darwin-release-arm64",
+        "displayName": "Darwin arm64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for macOS arm64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "ios-release-arm64",
+        "configurePreset": "ios-release-arm64",
+        "displayName": "iOS arm64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for iOS arm64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "ios-release-armv7",
+        "configurePreset": "ios-release-armv7",
+        "displayName": "iOS armv7 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for iOS armv7 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "ios-release-x86_64",
+        "configurePreset": "ios-release-x86_64",
+        "displayName": "iOS x86_64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for iOS x86_64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "android-release-x86_64",
+        "configurePreset": "android-release-x86_64",
+        "displayName": "Android x86_64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Android x86_64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "android-release-x86",
+        "configurePreset": "android-release-x86",
+        "displayName": "Android x86 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Android x86 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "android-release-armeabi-v7a",
+        "configurePreset": "android-release-armeabi-v7a",
+        "displayName": "Android armeabi-v7a Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Android armeabi-v7a - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "android-release-arm64-v8a",
+        "configurePreset": "android-release-arm64-v8a",
+        "displayName": "Android arm64-v8a Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Android arm64-v8a - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "windows-debug",
+        "configurePreset": "windows-debug",
+        "displayName": "Windows Local Compilation (Debug)",
+        "description": "Conan v2 with CMake example for Windows - Debug Configuration",
+        "configuration": "Debug"
+      },
+      {
+        "name": "win32-release-x64",
+        "configurePreset": "win32-release-x64",
+        "displayName": "Windows x64 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Windows x64 - Release Configuration",
+        "configuration": "Release"
+      },
+      {
+        "name": "win32-release-ia32",
+        "configurePreset": "win32-release-ia32",
+        "displayName": "Windows ia32 Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Windows ia32 - Release Configuration",
+        "configuration": "Release"
+      }
+    ],
+    "testPresets": [
+      {
+        "name": "darwin-debug",
+        "configurePreset": "darwin-debug",
+        "output": {"outputOnFailure": true},
+        "execution": {"noTestsAction": "error", "stopOnFailure": true}
+      },
+      {
+        "name": "darwin-release-arm64",
+        "configurePreset": "darwin-release-arm64",
+        "output": {"outputOnFailure": true},
+        "execution": {"noTestsAction": "error", "stopOnFailure": true}
+      }
+    ]
+  }
+  
