@@ -193,46 +193,23 @@
       {
         "name": "windows-debug",
         "inherits": "windows",
-        "displayName": "Windows x64 (Debug)",
+        "displayName": "Windows (Debug)",
         "description": "Conan v2 with CMake example for Windows - Debug Configuration",
-        "binaryDir": "${sourceDir}/build",
-        "architecture": {
-          "value": "x64",
-          "strategy": "set"
-        },
+        "binaryDir": "${sourceDir}/build-win32-debug",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Debug",
           "CMAKE_DEBUG_POSTFIX": "d"
         }
       },
       {
-        "name": "win32-release-x64",
+        "name": "win32-release",
         "inherits": "windows",
-        "displayName": "Windows x64 (Release)",
+        "displayName": "Windows (Release)",
         "description": "Conan v2 with CMake example for Windows - Release Configuration",
-        "binaryDir": "${sourceDir}/build-win32-x64",
-        "architecture": {
-          "value": "x64",
-          "strategy": "set"
-        },
+        "binaryDir": "${sourceDir}/build-win32-release",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Release",
-          "CMAKE_INSTALL_PREFIX": "${sourceDir}/win32-release-x64"
-        }
-      },
-      {
-        "name": "win32-release-ia32",
-        "inherits": "windows",
-        "displayName": "Windows ia32 (Release)",
-        "description": "Conan v2 with CMake example for Windows - Release Configuration",
-        "binaryDir": "${sourceDir}/build-win32-ia32",
-        "architecture": {
-          "value": "Win32",
-          "strategy": "set"
-        },
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "Release",
-          "CMAKE_INSTALL_PREFIX": "${sourceDir}/win32-release-ia32"
+          "CMAKE_INSTALL_PREFIX": "${sourceDir}/win32-release"
         }
       }
     ],
@@ -315,17 +292,10 @@
         "configuration": "Debug"
       },
       {
-        "name": "win32-release-x64",
-        "configurePreset": "win32-release-x64",
-        "displayName": "Windows x64 Local Compilation (Release)",
-        "description": "Conan v2 with CMake example for Windows x64 - Release Configuration",
-        "configuration": "Release"
-      },
-      {
-        "name": "win32-release-ia32",
-        "configurePreset": "win32-release-ia32",
-        "displayName": "Windows ia32 Local Compilation (Release)",
-        "description": "Conan v2 with CMake example for Windows ia32 - Release Configuration",
+        "name": "win32-release",
+        "configurePreset": "win32-release",
+        "displayName": "Windows Local Compilation (Release)",
+        "description": "Conan v2 with CMake example for Windows - Release Configuration",
         "configuration": "Release"
       }
     ],
