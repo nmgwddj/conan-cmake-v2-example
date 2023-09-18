@@ -16,6 +16,10 @@
 
 ![QtCrator](images/qt-creator.gif)
 
+### CLion
+
+![CLion](images/jetbrains-clion.gif)
+
 ## 手动编译
 
 查看支持编译的目标
