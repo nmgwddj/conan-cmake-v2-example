@@ -12,6 +12,10 @@
 
 ![VisualStudioIDE](images/visual-studio-ide.gif)
 
+### Qt Creator
+
+![QtCrator](images/qt-creator.gif)
+
 ## 手动编译
 
 查看支持编译的目标
